@@ -20,7 +20,7 @@ public class LevelGenerator : MonoBehaviour {
         //Debug.Log(collision.gameObject.tag);
         if (collision.gameObject.tag == "Platform")
         {
-            //Debug.Log("Platform off Screen");
+            Debug.Log("Platform off Screen");
             CreatePlatform();
             Destroy(collision.gameObject);
         }
@@ -29,6 +29,7 @@ public class LevelGenerator : MonoBehaviour {
 
     private void CreatePlatform() {
         GameObject[] platforms = GameObject.FindGameObjectsWithTag("Platform");
+        Vector3 playerPosition = GameObject.FindWithTag("Player").transform.position;
         float maxdis = platforms.ToList().Max((p) => p.transform.position.y);
         Vector3 spawnPosition = platforms.ToList().Where((p) => p.transform.position.y == maxdis).ToList()[0].transform.position;
         Quaternion rotate = Quaternion.Euler(0, 0, 90);
