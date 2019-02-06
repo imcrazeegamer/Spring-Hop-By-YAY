@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Platform
   - Score
+  - Enemy
+  - Rust
+  - SuperJump
+  - Shield
+  - ShieldPower
   layers:
   - Default
   - TransparentFX
