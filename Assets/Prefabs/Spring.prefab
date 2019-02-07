@@ -222,3 +222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 15
+  knockBack: 10
+  knockBackCount: 0
+  knockBackLength: 0.2
+  knockFromRight: 0

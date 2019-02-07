@@ -7,6 +7,9 @@ public class Platform : MonoBehaviour {
     [SerializeField]
 	private float jumpForce = 10f;
 
+    public AudioSource jumping;
+    public AudioClip jump;
+
     private bool hasScored = false;
 
 	void OnCollisionEnter2D(Collision2D collision)
@@ -25,10 +28,12 @@ public class Platform : MonoBehaviour {
             Rigidbody2D rb = collision.collider.GetComponent<Rigidbody2D>();
 			if (rb != null)
 			{
-				Vector2 velocity = rb.velocity;
+                jumping.clip = jump;
+                jumping.Play();
+                Vector2 velocity = rb.velocity;
 				velocity.y = jumpForce;
 				rb.velocity = velocity;
-
+                //I think something here might be the cause of Hopper sticking to walls like Spider-Man.
 			}
 		}
 	}

@@ -1,77 +1,109 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class Player : MonoBehaviour {
+public class Player : MonoBehaviour
+{
 
     [SerializeField]
-	private float movementSpeed = 10f;
+    private float movementSpeed = 10f;
 
+    public AudioSource powerup;
+    public AudioClip power;
+    public AudioSource enemyhit;
+    public AudioClip damage;
+
+
+
+   // public float knockBack;
+    //public float knockBackCount;
+    //public float knockBackLength;
+   // public bool knockFromRight;
+
+    //private float thrust = 10.0f;
 
     bool hit;
     bool ShieldActive;
-	Rigidbody2D rb;
+    Rigidbody2D rb;
 
-	float movement = 0f;
+    float movement = 0f;
 
-	// Use this for initialization
-	void Start () {
-		rb = GetComponent<Rigidbody2D>();
+    // Use this for initialization
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
     }
-	
-	// Update is called once per frame
-	void Update () {
-		movement = Input.GetAxis("Horizontal") * movementSpeed;
-	}
 
-	void FixedUpdate()
-	{
-		Vector2 velocity = rb.velocity;
-		velocity.x = movement;
-		rb.velocity = velocity;
+    // Update is called once per frame
+    void Update()
+    {
+        movement = Input.GetAxis("Horizontal") * movementSpeed;
+    }
 
-        if (hit)
+    void FixedUpdate()
+    {
+        //if (knockBackCount <= 0)
+        //{
+            Vector2 velocity = rb.velocity;
+            velocity.x = movement;
+            rb.velocity = velocity;
+       /* }
+        else
         {
-          //Not sure if it's possible to detect collisions inside of FixedUpdate, but I couldn't figure it out. Ran into a number of roadblocks and couldn't quite figure
-          //out how to detect collision and apply the proper force.
-        }
-	}
-    IEnumerator OnTriggerEnter2D(Collider2D collision)
-        {
-            if (collision.gameObject.CompareTag("Enemy") && !ShieldActive)
+            if (knockFromRight)
             {
-                hit = true;
-                //Since Hopper will get knocked back, FixedUpdate seems like the best place to execute that part of the function.
+                rb.velocity﻿ = new Vector2(-knockBack, knockBack);
             }
-
+            if (!knockFromRight)
+            {
+                rb.velocity﻿ = new Vector2(knockBack, knockBack);
+            }
+            knockBackCount -= Time.deltaTime;
+        }*/
+    }
+    IEnumerator OnTriggerEnter2D(Collider2D collision)
+    {
+       /* if (collision.gameObject.CompareTag("Enemy") && !ShieldActive)
+        {
+            collision.gameObject.SetActive(false);
+            rb.AddForce(transform.up * thrust);
+            */
             if (collision.gameObject.CompareTag("Rust") && !ShieldActive)
             {
-                collision.gameObject.SetActive(false);
+            enemyhit.clip = damage;
+            enemyhit.Play();
+            collision.gameObject.SetActive(false);
                 movementSpeed = 5f;
                 yield return new WaitForSeconds(5);
                 movementSpeed = 10f;
-            //I think we should split jump height and movement speed into two seperate things. After hitting Rust, jumps become impossible. Players will sit on the current pickle and wait.
-            //...or it's probably something to do with the platforms themselves that I can't figure out...
+                //Not exactly sure on what to type to make a reference to another script. Feel like it's obvious, but I can't figure it out...
             }
 
-            if(collision.gameObject.CompareTag("SuperJump"))
+            if (collision.gameObject.CompareTag("SuperJump"))
             {
-             collision.gameObject.SetActive(false);
-             movementSpeed = 20f;
-             yield return new WaitForSeconds(5);
-             movementSpeed = 10f;
+            powerup.clip = power;
+            powerup.Play();
+                collision.gameObject.SetActive(false);
+                movementSpeed = 20f;
+                yield return new WaitForSeconds(5);
+                movementSpeed = 10f;
             }
 
-        if (collision.gameObject.CompareTag("ShieldPower"))
-        {
+            if (collision.gameObject.CompareTag("ShieldPower"))
+            {
+            powerup.clip = power;
+            powerup.Play();
             collision.gameObject.SetActive(false);
-            ShieldActive = true;
-            yield return new WaitForSeconds(5);
-            ShieldActive = false;
-            //This is probably really simple, but I couldn't figure out the exact method of turning the shield on and off when Hopper picks up the powerup.
-        }
-    }//All of these enemies and powerups still need to be spawned in randomly throughout the level. Wasn't sure I wanted to start messing with that.
-    //The jetpack also needs to be coded, though I wasn't completely sure on where to start with that one.
+                ShieldActive = true;
+                yield return new WaitForSeconds(5);
+                ShieldActive = false;
+                //This is probably really simple, but I couldn't figure out the exact method of turning the shield on and off when Hopper picks up the powerup.
+            }
+        }//All of these enemies and powerups still need to be spawned in randomly throughout the level. Wasn't sure I wanted to start messing with that.
+         //The jetpack also needs to be coded, though I wasn't completely sure on where to start with that one.*/
 
-}
+    }
+
+
+
