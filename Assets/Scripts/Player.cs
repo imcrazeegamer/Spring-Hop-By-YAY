@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
@@ -13,13 +14,17 @@ public class Player : MonoBehaviour
     public AudioClip power;
     public AudioSource enemyhit;
     public AudioClip damage;
+    public GameObject RestartButton;
+    public GameObject MenuButton;
+    public GameObject Shield;
 
+    private Text collectedmoney;
+    public int currentMoney;
 
-
-   // public float knockBack;
+    // public float knockBack;
     //public float knockBackCount;
     //public float knockBackLength;
-   // public bool knockFromRight;
+    // public bool knockFromRight;
 
     //private float thrust = 10.0f;
 
@@ -32,7 +37,11 @@ public class Player : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        rb.GetComponent<Rigidbody2D>();
+        RestartButton.SetActive(false);
+        MenuButton.SetActive(false);
+        Shield.SetActive(false);
+        collectedmoney.text = PlayerPrefs.GetInt("collectedmoney", 0).ToString();
     }
 
     // Update is called once per frame
@@ -95,11 +104,20 @@ public class Player : MonoBehaviour
             powerup.clip = power;
             powerup.Play();
             collision.gameObject.SetActive(false);
-                ShieldActive = true;
+                Shield.SetActive(true);
+                Shield.SetActive(true);
                 yield return new WaitForSeconds(5);
-                ShieldActive = false;
+                Shield.SetActive(false);
+            Shield.SetActive(false);
                 //This is probably really simple, but I couldn't figure out the exact method of turning the shield on and off when Hopper picks up the powerup.
             }
+
+            if (collision.gameObject.CompareTag("Money"))
+        {
+            collision.gameObject.SetActive(false);
+            currentMoney += 100;
+            collectedmoney.text = PlayerPrefs.GetInt("collectedmoney", ++currentMoney).ToString();
+        }
         }//All of these enemies and powerups still need to be spawned in randomly throughout the level. Wasn't sure I wanted to start messing with that.
          //The jetpack also needs to be coded, though I wasn't completely sure on where to start with that one.*/
 

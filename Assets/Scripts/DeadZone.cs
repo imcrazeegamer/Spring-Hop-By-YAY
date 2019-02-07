@@ -6,9 +6,10 @@ public class DeadZone : MonoBehaviour
 {
     public AudioSource death;
     public AudioClip deaths;
+    public GameObject RestartButton;
+    public GameObject MenuButton;
 
-
-    void OnCollisionEnter2D(Collision2D collision)
+    IEnumerator OnCollisionEnter2D(Collision2D collision)
     {
         //Debug.Log(collision.gameObject.tag);
         if (collision.gameObject.tag == "Player")
@@ -17,7 +18,11 @@ public class DeadZone : MonoBehaviour
             death.clip = deaths;
             death.Play();
             collision.gameObject.GetComponent<Rigidbody2D>().simulated = false;
-            Debug.Log("Dead");
+            //Debug.Log("Dead");
+            yield return new WaitForSeconds(3);
+            RestartButton.SetActive(true);
+            MenuButton.SetActive(true);
         }
+ }
     }
-}
+
