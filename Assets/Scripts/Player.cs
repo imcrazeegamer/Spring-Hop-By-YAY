@@ -18,8 +18,11 @@ public class Player : MonoBehaviour
     public GameObject MenuButton;
     public GameObject Shield;
 
-    private Text collectedmoney;
+    public Text collectedmoney;
     public int currentMoney;
+
+    public GameObject jump;
+    Platform jump_script;
 
     // public float knockBack;
     //public float knockBackCount;
@@ -37,11 +40,13 @@ public class Player : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        rb.GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
+        jump_script = jump.GetComponent<Platform>();
+        jump_script.jumpForce = 17f;
         RestartButton.SetActive(false);
         MenuButton.SetActive(false);
         Shield.SetActive(false);
-        collectedmoney.text = PlayerPrefs.GetInt("collectedmoney", 0).ToString();
+        //collectedmoney.text = PlayerPrefs.GetInt("collectedmoney", 0).ToString();
     }
 
     // Update is called once per frame
@@ -54,22 +59,22 @@ public class Player : MonoBehaviour
     {
         //if (knockBackCount <= 0)
         //{
-            Vector2 velocity = rb.velocity;
-            velocity.x = movement;
-            rb.velocity = velocity;
-       /* }
-        else
-        {
-            if (knockFromRight)
-            {
-                rb.velocity﻿ = new Vector2(-knockBack, knockBack);
-            }
-            if (!knockFromRight)
-            {
-                rb.velocity﻿ = new Vector2(knockBack, knockBack);
-            }
-            knockBackCount -= Time.deltaTime;
-        }*/
+        Vector2 velocity = rb.velocity;
+        velocity.x = movement;
+        rb.velocity = velocity;
+        /* }
+         else
+         {
+             if (knockFromRight)
+             {
+                 rb.velocity﻿ = new Vector2(-knockBack, knockBack);
+             }
+             if (!knockFromRight)
+             {
+                 rb.velocity﻿ = new Vector2(knockBack, knockBack);
+             }
+             knockBackCount -= Time.deltaTime;
+         }*/
     }
     IEnumerator OnTriggerEnter2D(Collider2D collision)
     {
@@ -84,9 +89,10 @@ public class Player : MonoBehaviour
             enemyhit.Play();
             collision.gameObject.SetActive(false);
                 movementSpeed = 5f;
+            jump_script.jumpForce = 14f;
                 yield return new WaitForSeconds(5);
                 movementSpeed = 10f;
-                //Not exactly sure on what to type to make a reference to another script. Feel like it's obvious, but I can't figure it out...
+            jump_script.jumpForce = 17f;
             }
 
             if (collision.gameObject.CompareTag("SuperJump"))
@@ -95,8 +101,10 @@ public class Player : MonoBehaviour
             powerup.Play();
                 collision.gameObject.SetActive(false);
                 movementSpeed = 20f;
+            jump_script.jumpForce = 30f;
                 yield return new WaitForSeconds(5);
                 movementSpeed = 10f;
+            jump_script.jumpForce = 17f;
             }
 
             if (collision.gameObject.CompareTag("ShieldPower"))
@@ -109,7 +117,6 @@ public class Player : MonoBehaviour
                 yield return new WaitForSeconds(5);
                 Shield.SetActive(false);
             Shield.SetActive(false);
-                //This is probably really simple, but I couldn't figure out the exact method of turning the shield on and off when Hopper picks up the powerup.
             }
 
             if (collision.gameObject.CompareTag("Money"))

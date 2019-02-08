@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Platform : MonoBehaviour {
 
-    [SerializeField]
-	private float jumpForce = 10f;
+    
+	public float jumpForce = 17f;
 
     public AudioSource jumping;
     public AudioClip jump;
