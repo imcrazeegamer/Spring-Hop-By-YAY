@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 8272862154019512645}
   - component: {fileID: 8272862154019512666}
   - component: {fileID: 8272862154019512667}
+  - component: {fileID: 1103577871}
   m_Layer: 0
   m_Name: PowerSpring
-  m_TagString: SuperJump
+  m_TagString: Effect
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -106,3 +107,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3, y: 4}
   m_EdgeRadius: 0
+--- !u!114 &1103577871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8272862154019512664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74cd5aed23241514bb41a8454b4b8a91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SObject: {fileID: 11400000, guid: 5860a3fd6e6980046b03ed5afc3d7d6b, type: 2}

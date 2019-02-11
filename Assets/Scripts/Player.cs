@@ -10,41 +10,31 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float movementSpeed = 10f;
 
-    public AudioSource powerup;
-    public AudioClip power;
-    public AudioSource enemyhit;
-    public AudioClip damage;
-    public GameObject RestartButton;
-    public GameObject MenuButton;
-    public GameObject Shield;
+    [SerializeField]
+    private readonly AudioSource PowerupSoundSource;
+    [SerializeField]
+    private readonly AudioClip PowerupSound;
+    [SerializeField]
+    private readonly AudioSource EnemyHitSoundSource;
+    [SerializeField]
+    private readonly AudioClip DamageSound;
 
-    public Text collectedmoney;
-    public int currentMoney;
+    [SerializeField]
+    private GameObject Shield;
 
-    public GameObject jump;
-    Platform jump_script;
-
-    // public float knockBack;
-    //public float knockBackCount;
-    //public float knockBackLength;
-    // public bool knockFromRight;
-
-    //private float thrust = 10.0f;
-
-    bool hit;
-    bool ShieldActive;
-    Rigidbody2D rb;
+    [HideInInspector]
+    public Rigidbody2D rb;
 
     float movement = 0f;
+
+    // const
+    public float GravityScale;
 
     // Use this for initialization
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        jump_script = jump.GetComponent<Platform>();
-        jump_script.jumpForce = 17f;
-        RestartButton.SetActive(false);
-        MenuButton.SetActive(false);
+        GravityScale = rb.gravityScale;
         Shield.SetActive(false);
         //collectedmoney.text = PlayerPrefs.GetInt("collectedmoney", 0).ToString();
     }
@@ -57,78 +47,13 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        //if (knockBackCount <= 0)
-        //{
         Vector2 velocity = rb.velocity;
         velocity.x = movement;
         rb.velocity = velocity;
-        /* }
-         else
-         {
-             if (knockFromRight)
-             {
-                 rb.velocity﻿ = new Vector2(-knockBack, knockBack);
-             }
-             if (!knockFromRight)
-             {
-                 rb.velocity﻿ = new Vector2(knockBack, knockBack);
-             }
-             knockBackCount -= Time.deltaTime;
-         }*/
+       
     }
-    IEnumerator OnTriggerEnter2D(Collider2D collision)
-    {
-       /* if (collision.gameObject.CompareTag("Enemy") && !ShieldActive)
-        {
-            collision.gameObject.SetActive(false);
-            rb.AddForce(transform.up * thrust);
-            */
-            if (collision.gameObject.CompareTag("Rust") && !ShieldActive)
-            {
-            enemyhit.clip = damage;
-            enemyhit.Play();
-            collision.gameObject.SetActive(false);
-                movementSpeed = 5f;
-            jump_script.jumpForce = 14f;
-                yield return new WaitForSeconds(5);
-                movementSpeed = 10f;
-            jump_script.jumpForce = 17f;
-            }
-
-            if (collision.gameObject.CompareTag("SuperJump"))
-            {
-            powerup.clip = power;
-            powerup.Play();
-                collision.gameObject.SetActive(false);
-                movementSpeed = 20f;
-            jump_script.jumpForce = 30f;
-                yield return new WaitForSeconds(5);
-                movementSpeed = 10f;
-            jump_script.jumpForce = 17f;
-            }
-
-            if (collision.gameObject.CompareTag("ShieldPower"))
-            {
-            powerup.clip = power;
-            powerup.Play();
-            collision.gameObject.SetActive(false);
-                Shield.SetActive(true);
-                Shield.SetActive(true);
-                yield return new WaitForSeconds(5);
-                Shield.SetActive(false);
-            Shield.SetActive(false);
-            }
-
-            if (collision.gameObject.CompareTag("Money"))
-        {
-            collision.gameObject.SetActive(false);
-            currentMoney += 100;
-            collectedmoney.text = PlayerPrefs.GetInt("collectedmoney", ++currentMoney).ToString();
-        }
-        }//All of these enemies and powerups still need to be spawned in randomly throughout the level. Wasn't sure I wanted to start messing with that.
-         //The jetpack also needs to be coded, though I wasn't completely sure on where to start with that one.*/
-
-    }
+ 
+}
 
 
 

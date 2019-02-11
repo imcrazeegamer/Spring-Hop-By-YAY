@@ -9,6 +9,11 @@ public class DeadZone : MonoBehaviour
     public GameObject RestartButton;
     public GameObject MenuButton;
 
+    private void Start()
+    {
+        RestartButton.SetActive(false);
+        MenuButton.SetActive(false);
+    }
     IEnumerator OnCollisionEnter2D(Collision2D collision)
     {
         //Debug.Log(collision.gameObject.tag);
@@ -19,9 +24,13 @@ public class DeadZone : MonoBehaviour
             death.Play();
             collision.gameObject.GetComponent<Rigidbody2D>().simulated = false;
             //Debug.Log("Dead");
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(1.5f);
             RestartButton.SetActive(true);
             MenuButton.SetActive(true);
+        }
+        else if (collision.gameObject.tag == "Effect")
+        {
+            Destroy(collision.gameObject);
         }
  }
     }

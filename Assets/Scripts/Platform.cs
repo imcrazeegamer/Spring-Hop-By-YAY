@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Platform : MonoBehaviour {
 
-    
-	public float jumpForce = 17f;
+    public float jumpForce = 17f;
 
     public AudioSource jumping;
     public AudioClip jump;
@@ -14,7 +13,6 @@ public class Platform : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D collision)
 	{
-        //ScoreManager score = new ScoreManager();
 
 
         //if obj is not coming from the bottom

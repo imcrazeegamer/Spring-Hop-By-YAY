@@ -7,11 +7,10 @@ TagManager:
   - Platform
   - Score
   - Enemy
-  - Rust
-  - SuperJump
-  - Shield
-  - ShieldPower
+  - Effect
   - Money
+  - ShieldPower
+  - moneyScore
   layers:
   - Default
   - TransparentFX
