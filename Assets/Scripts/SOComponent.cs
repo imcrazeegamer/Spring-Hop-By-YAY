@@ -18,7 +18,7 @@ public class SOComponent : MonoBehaviour
             case Effect.Function.PowerSpring:
                 StartCoroutine(SObject.PowerSpring(player, this.gameObject));
                 return;
-            case Effect.Function.Sheild:
+            case Effect.Function.Shield:
                 StartCoroutine(SObject.Sheild(player, this.gameObject));
                 return;
             default:

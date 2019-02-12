@@ -10,4 +10,11 @@ public class Money : ScriptableObject
 
     public Sprite Artwork;
 
+    private AudioSource audi;
+    
+
+    void Start()
+    {
+        //buffitem.GetComponent<AudioSource>().Play();
+    }
 }

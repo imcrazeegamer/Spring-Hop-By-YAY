@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private GameObject Shield;
 
+
     [HideInInspector]
     public Rigidbody2D rb;
 
@@ -35,7 +36,7 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         GravityScale = rb.gravityScale;
-        Shield.SetActive(false);
+        //Shield.SetActive(false);
         //collectedmoney.text = PlayerPrefs.GetInt("collectedmoney", 0).ToString();
     }
 

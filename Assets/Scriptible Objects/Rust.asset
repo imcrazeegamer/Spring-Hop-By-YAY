@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Rust
   m_EditorClassIdentifier: 
   name: Rust
-  Artwork: {fileID: 21300000, guid: fb2faa2012dd0674dbcff63cf26c880f, type: 3}
+  prefab: {fileID: 451720915161739139, guid: ed619d07dcb585f47acab780c5168d1c, type: 3}
   function: 0

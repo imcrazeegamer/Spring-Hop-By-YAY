@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c608697b4f4512b448177f356cb0ef48, type: 3}
-  m_Name: Power_Spring
+  m_Name: Shield
   m_EditorClassIdentifier: 
-  name: Power Spring
-  prefab: {fileID: 8272862154019512664, guid: 3303d79fc574edb45ab7a59221d8239f, type: 3}
-  function: 2
+  name: Shield
+  prefab: {fileID: 737868652671636205, guid: 5aab27f621eea9c4fbac565e4ceca351, type: 3}
+  function: 1

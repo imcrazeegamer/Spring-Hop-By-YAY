@@ -7,40 +7,81 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Effect", menuName = "Items/Effect")]
 public class Effect : ScriptableObject
 {
-    public enum Function { Rust, Sheild, PowerSpring }
+    public enum Function { Rust, Shield, PowerSpring }
 
     public new string name;
 
-    public Sprite Artwork;
+    private GameObject ShieldPowerUp;
+
+    public GameObject prefab;
+
+    private static bool shield = false;
+
+    private AudioSource audi;
 
     public Function function;
 
+    void Initialize()
+    {
+        ShieldPowerUp = GameObject.FindGameObjectWithTag("Shield");
+    }
+
+    void ShieldEnable()
+    {
+        ShieldPowerUp.GetComponent<SpriteRenderer>().enabled = true;
+        shield = true;
+    }
+
+
+    void ShieldDisable()
+    {
+        ShieldPowerUp.GetComponent<SpriteRenderer>().enabled = false;
+        shield = false;
+    }
+
+
     public IEnumerator Rust(Player player, GameObject buffitem)
     {
-        //config
-        const float duration = 3.5f;
+        Initialize();
+        Debug.Log(shield);
+        if (shield)
+        {
+            ShieldDisable();
+            Debug.Log("invicstart");
+            yield return new WaitForSeconds(2);
+            Debug.Log("invincibleover");
+        }
+        else
+        {
+            //config
+            const float duration = 3.5f;
 
-        Rigidbody2D rb = player.rb;
-        
+            Rigidbody2D rb = player.rb;
 
-        //do rust effect
-        rb.gravityScale *= 1.17f;
 
-        //return null;
-        buffitem.GetComponent<SpriteRenderer>().enabled = false;
-        //Debug.Log(rb.gravityScale);
-        yield return new WaitForSeconds(duration);
-        //Debug.Log("wait is over");
-        rb.gravityScale = player.GravityScale;
-        Destroy(buffitem);
+            //do rust effect
+            rb.gravityScale *= 1.17f;
+
+            //return null;
+            buffitem.GetComponent<AudioSource>().Play();
+            buffitem.GetComponent<SpriteRenderer>().enabled = false;
+            buffitem.GetComponent<BoxCollider2D>().enabled = false;
+            //Debug.Log(rb.gravityScale);
+            yield return new WaitForSeconds(duration);
+            //Debug.Log("wait is over");
+            rb.gravityScale = player.GravityScale;
+            Destroy(buffitem);
+        }
     }
 
     public IEnumerator PowerSpring(Player player, GameObject buffitem)
     {
+        Initialize();
         //config
         const float duration = 2f;
 
         //do rust effect
+
 
         float tempJumpForce = 0;
         foreach (Platform platform in GameObject.FindGameObjectsWithTag("Platform").Select((p) => p.GetComponent<Platform>()))
@@ -49,7 +90,9 @@ public class Effect : ScriptableObject
             platform.jumpForce *= 1.5f;
         }
         //return null;
+        buffitem.GetComponent<AudioSource>().Play();
         buffitem.GetComponent<SpriteRenderer>().enabled = false;
+        buffitem.GetComponent<BoxCollider2D>().enabled = false;
         //Debug.Log(rb.gravityScale);
         yield return new WaitForSeconds(duration);
         //Debug.Log("wait is over");
@@ -59,19 +102,26 @@ public class Effect : ScriptableObject
         }
         Destroy(buffitem);
 
+
         //disable effect and remove debuff
     }
 
     public IEnumerator Sheild(Player player, GameObject buffitem)
     {
-        //config
-        const float duration = 5f;
+        Initialize();
+        Debug.Log(ShieldPowerUp);
+        ShieldEnable();
+        buffitem.GetComponent<AudioSource>().Play();
+        buffitem.GetComponent<SpriteRenderer>().enabled = false;
+        buffitem.GetComponent<BoxCollider2D>().enabled = false;
+        Debug.Log("Enableshield" + shield);
 
-        //do rust effect
+        yield return new WaitForSeconds(5);
 
-        yield return new WaitForSeconds(duration);
+        ShieldDisable();
+        Debug.Log("shielddisable");
+        Destroy(buffitem);
 
-        //disable effect and remove debuff
     }
-
 }
+
