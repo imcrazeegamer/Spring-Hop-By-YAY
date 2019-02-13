@@ -13,6 +13,9 @@ public class LevelGenerator : MonoBehaviour {
     private GameObject[] items;
 
     [SerializeField]
+    private GameObject[] enemies;
+
+    [SerializeField]
     private GameObject[] moneyz;
 
     [SerializeField]
@@ -49,8 +52,10 @@ public class LevelGenerator : MonoBehaviour {
         spawnPosition.y += 1f;
         if (Random.Range(0, 100) <= 40)
             Instantiate(moneyz[Random.Range(0, moneyz.Length)], spawnPosition, Quaternion.identity);
-        else if (Random.Range(0, 100) <= 40)
+        else if (Random.Range(0, 100) <= 20)
             Instantiate(items[Random.Range(0, items.Length)], spawnPosition, Quaternion.identity);
+        else if (Random.Range(0, 100) <= 40)
+            Instantiate(enemies[Random.Range(0, items.Length)], spawnPosition, Quaternion.identity);
 
 
     }

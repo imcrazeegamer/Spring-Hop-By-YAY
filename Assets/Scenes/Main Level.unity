@@ -250,37 +250,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 378eab200dd523c4aad1be3e7d099d16, type: 3}
---- !u!1 &73409854 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6827422886801077628, guid: 4b27fa44a3a82d047bfc02aa6d94ba64,
-    type: 3}
-  m_PrefabInstance: {fileID: 6827422887544839173}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &73409855
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 73409854}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 800f86250e4d7b34a964b34a5a5f5490, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &73409856
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 73409854}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91b3e925b3e950d4e8bb70c749c281ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wallet: {fileID: 11400000, guid: 8e5a3399d436bb54ab5ea17d576dad78, type: 2}
 --- !u!1 &97112469
 GameObject:
   m_ObjectHideFlags: 0
@@ -1087,12 +1056,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d990ad3ef96d674ca5f8231d76cf6cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1459148196 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7292470711026281286, guid: 378eab200dd523c4aad1be3e7d099d16,
-    type: 3}
-  m_PrefabInstance: {fileID: 7292470710202750081}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1549609340 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6827422886801077625, guid: 4b27fa44a3a82d047bfc02aa6d94ba64,
@@ -1466,46 +1429,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6827422886801077627, guid: 4b27fa44a3a82d047bfc02aa6d94ba64,
+    - target: {fileID: 6827422886801077630, guid: 4b27fa44a3a82d047bfc02aa6d94ba64,
         type: 3}
-      propertyPath: RestartButton
+      propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 195361456}
-    - target: {fileID: 6827422886801077627, guid: 4b27fa44a3a82d047bfc02aa6d94ba64,
+      objectReference: {fileID: 21300000, guid: 34ae5176fa1b00844b895541ebde27c9,
         type: 3}
-      propertyPath: MenuButton
-      value: 
-      objectReference: {fileID: 1849373775}
-    - target: {fileID: 6827422886801077627, guid: 4b27fa44a3a82d047bfc02aa6d94ba64,
-        type: 3}
-      propertyPath: jump
-      value: 
-      objectReference: {fileID: 1459148196}
-    - target: {fileID: 1637544589888519417, guid: 4b27fa44a3a82d047bfc02aa6d94ba64,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 1637544589888519417, guid: 4b27fa44a3a82d047bfc02aa6d94ba64,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.2473499
-      objectReference: {fileID: 0}
-    - target: {fileID: 8658586269616143994, guid: 4b27fa44a3a82d047bfc02aa6d94ba64,
-        type: 3}
-      propertyPath: m_TagString
-      value: Shield
-      objectReference: {fileID: 0}
-    - target: {fileID: 8658586269616143994, guid: 4b27fa44a3a82d047bfc02aa6d94ba64,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9012011877465915940, guid: 4b27fa44a3a82d047bfc02aa6d94ba64,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b27fa44a3a82d047bfc02aa6d94ba64, type: 3}
 --- !u!1001 &7292470710202750081
@@ -1670,6 +1599,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1032749690, guid: 2fa2033ee0009454abb15447e102ef4f, type: 3}
+      propertyPath: enemies.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1032749690, guid: 2fa2033ee0009454abb15447e102ef4f, type: 3}
+      propertyPath: money.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1032749690, guid: 2fa2033ee0009454abb15447e102ef4f, type: 3}
       propertyPath: Effects.Array.data[1]
       value: 
       objectReference: {fileID: 0}
@@ -1680,7 +1617,7 @@ PrefabInstance:
     - target: {fileID: 1032749690, guid: 2fa2033ee0009454abb15447e102ef4f, type: 3}
       propertyPath: items.Array.data[0]
       value: 
-      objectReference: {fileID: 451720915161739139, guid: ed619d07dcb585f47acab780c5168d1c,
+      objectReference: {fileID: 737868652671636205, guid: 5aab27f621eea9c4fbac565e4ceca351,
         type: 3}
     - target: {fileID: 1032749690, guid: 2fa2033ee0009454abb15447e102ef4f, type: 3}
       propertyPath: items.Array.data[1]
@@ -1695,7 +1632,27 @@ PrefabInstance:
     - target: {fileID: 1032749690, guid: 2fa2033ee0009454abb15447e102ef4f, type: 3}
       propertyPath: items.Array.data[2]
       value: 
-      objectReference: {fileID: 737868652671636205, guid: 5aab27f621eea9c4fbac565e4ceca351,
+      objectReference: {fileID: 3810638491135129727, guid: 4c850b4971285244082e40bd4a375d04,
+        type: 3}
+    - target: {fileID: 1032749690, guid: 2fa2033ee0009454abb15447e102ef4f, type: 3}
+      propertyPath: items.Array.data[3]
+      value: 
+      objectReference: {fileID: 6402857907885906772, guid: 6227da4ac041a6f4aa033d88571ec5e1,
+        type: 3}
+    - target: {fileID: 1032749690, guid: 2fa2033ee0009454abb15447e102ef4f, type: 3}
+      propertyPath: enemies.Array.data[0]
+      value: 
+      objectReference: {fileID: 451720915161739139, guid: ed619d07dcb585f47acab780c5168d1c,
+        type: 3}
+    - target: {fileID: 1032749690, guid: 2fa2033ee0009454abb15447e102ef4f, type: 3}
+      propertyPath: enemies.Array.data[1]
+      value: 
+      objectReference: {fileID: 6402857907885906772, guid: 6227da4ac041a6f4aa033d88571ec5e1,
+        type: 3}
+    - target: {fileID: 1032749690, guid: 2fa2033ee0009454abb15447e102ef4f, type: 3}
+      propertyPath: money.Array.data[0]
+      value: 
+      objectReference: {fileID: 3207768181254465832, guid: e4e81418fc6262749a80fe8dbc79bf05,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2fa2033ee0009454abb15447e102ef4f, type: 3}

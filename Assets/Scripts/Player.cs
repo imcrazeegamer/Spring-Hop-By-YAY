@@ -36,8 +36,6 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         GravityScale = rb.gravityScale;
-        //Shield.SetActive(false);
-        //collectedmoney.text = PlayerPrefs.GetInt("collectedmoney", 0).ToString();
     }
 
     // Update is called once per frame

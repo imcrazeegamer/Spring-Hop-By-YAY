@@ -351,12 +351,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 502865182}
-        m_MethodName: 
+      - m_Target: {fileID: 502865180}
+        m_MethodName: SetTexture
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Material, UnityEngine
+          m_ObjectArgument: {fileID: 2800000, guid: 3a0a71e76643406408da315f84f1bb93,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Texture, UnityEngine
           m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1276,7 +1277,7 @@ RectTransform:
   m_GameObject: {fileID: 1654589268}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.735, y: 0.735, z: 0.735}
+  m_LocalScale: {x: 0.62875, y: 0.62875, z: 0.62875}
   m_Children:
   - {fileID: 654964350}
   - {fileID: 502865177}
@@ -1289,8 +1290,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 294, y: 316}
-  m_SizeDelta: {x: 800, y: 0}
+  m_AnchoredPosition: {x: 251.5, y: 316}
+  m_SizeDelta: {x: 799.99994, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1654589273
 MonoBehaviour:

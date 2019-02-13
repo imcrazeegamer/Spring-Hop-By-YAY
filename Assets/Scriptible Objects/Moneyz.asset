@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff0cbee393c3aee40a21d1869eac7c28, type: 3}
   m_Name: Moneyz
   m_EditorClassIdentifier: 
-  name: Moneyz
+  name: Money
   currencyAmount: 100
   Artwork: {fileID: 21300000, guid: 0f41d636ee1010a4bbfec4ea38f4d9ef, type: 3}
-  audio: {fileID: 8300000, guid: cdba206204c04d641b4ffc29c2e52b07, type: 3}

@@ -21,6 +21,9 @@ public class SOComponent : MonoBehaviour
             case Effect.Function.Shield:
                 StartCoroutine(SObject.Sheild(player, this.gameObject));
                 return;
+            case Effect.Function.Cape:
+                StartCoroutine(SObject.Cape(player, this.gameObject));
+                return;
             default:
                 return;
         }

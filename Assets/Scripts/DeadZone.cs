@@ -32,6 +32,10 @@ public class DeadZone : MonoBehaviour
         {
             Destroy(collision.gameObject);
         }
+        else if (collision.gameObject.tag == "ShieldPower")
+        {
+            Destroy(collision.gameObject);
+        }
  }
     }
 

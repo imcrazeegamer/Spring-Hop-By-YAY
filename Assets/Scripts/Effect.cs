@@ -7,7 +7,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Effect", menuName = "Items/Effect")]
 public class Effect : ScriptableObject
 {
-    public enum Function { Rust, Shield, PowerSpring }
+    public enum Function { Rust, Shield, PowerSpring, Cape }
 
     public new string name;
 
@@ -20,6 +20,7 @@ public class Effect : ScriptableObject
     private AudioSource audi;
 
     public Function function;
+
 
     void Initialize()
     {
@@ -120,6 +121,31 @@ public class Effect : ScriptableObject
 
         ShieldDisable();
         Debug.Log("shielddisable");
+        Destroy(buffitem);
+
+    }
+
+    public IEnumerator Cape (Player player, GameObject buffitem)
+    {
+        Initialize();
+        Rigidbody2D rb = player.rb;
+        float tempJumpForce = 0;
+        foreach (Platform platform in GameObject.FindGameObjectsWithTag("Platform").Select((p) => p.GetComponent<Platform>()))
+        {
+            tempJumpForce = platform.jumpForce;
+            platform.jumpForce *= 3f;
+        }
+
+        buffitem.GetComponent<AudioSource>().Play();
+        buffitem.GetComponent<SpriteRenderer>().enabled = false;
+        buffitem.GetComponent<BoxCollider2D>().enabled = false;
+        
+        yield return new WaitForSeconds(2);
+
+        foreach (Platform platform in GameObject.FindGameObjectsWithTag("Platform").Select((p) => p.GetComponent<Platform>()))
+        {
+            platform.jumpForce = tempJumpForce;
+        }
         Destroy(buffitem);
 
     }

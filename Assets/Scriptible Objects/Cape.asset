@@ -9,7 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 118d71d0efc9d4047b76f6757cc68958, type: 3}
-  m_Name: Hoppers Special Wallet
+  m_Script: {fileID: 11500000, guid: c608697b4f4512b448177f356cb0ef48, type: 3}
+  m_Name: Cape
   m_EditorClassIdentifier: 
-  Balance: 900
+  name: Cape
+  prefab: {fileID: 3810638491135129727, guid: 4c850b4971285244082e40bd4a375d04, type: 3}
+  function: 3

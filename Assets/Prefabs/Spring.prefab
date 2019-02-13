@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 6827422886801077627}
   - component: {fileID: 135337861}
   - component: {fileID: 135337862}
+  - component: {fileID: 73409855}
+  - component: {fileID: 73409856}
   m_Layer: 0
   m_Name: Spring
   m_TagString: Player
@@ -145,16 +147,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 10
-  powerup: {fileID: 135337862}
-  power: {fileID: 8300000, guid: 93bb5b7e92acbbb49880a47e9a562a12, type: 3}
-  enemyhit: {fileID: 135337861}
-  damage: {fileID: 8300000, guid: a0339789a10a5884caf7586261c5f6d3, type: 3}
-  RestartButton: {fileID: 0}
-  MenuButton: {fileID: 0}
   Shield: {fileID: 8658586269616143994}
-  collectedmoney: {fileID: 0}
-  currentMoney: 0
-  jump: {fileID: 0}
+  rb: {fileID: 0}
+  GravityScale: 0
 --- !u!82 &135337861
 AudioSource:
   m_ObjectHideFlags: 0
@@ -347,6 +342,31 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &73409855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6827422886801077628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 800f86250e4d7b34a964b34a5a5f5490, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &73409856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6827422886801077628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91b3e925b3e950d4e8bb70c749c281ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wallet: {fileID: 11400000, guid: 8e5a3399d436bb54ab5ea17d576dad78, type: 2}
 --- !u!1001 &1820061788675224009
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -359,10 +379,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShieldUse (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7019795548877410227, guid: 5e633703958f49d49a2a3691cf6fb203,
+        type: 3}
+      propertyPath: m_TagString
+      value: Shield
+      objectReference: {fileID: 0}
     - target: {fileID: 1151675403045522736, guid: 5e633703958f49d49a2a3691cf6fb203,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.01
       objectReference: {fileID: 0}
     - target: {fileID: 1151675403045522736, guid: 5e633703958f49d49a2a3691cf6fb203,
         type: 3}
@@ -417,7 +442,7 @@ PrefabInstance:
     - target: {fileID: 1151675403045522736, guid: 5e633703958f49d49a2a3691cf6fb203,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.6666665
+      value: 1.2473499
       objectReference: {fileID: 0}
     - target: {fileID: 1151675403045522736, guid: 5e633703958f49d49a2a3691cf6fb203,
         type: 3}
@@ -428,6 +453,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.6666665
+      objectReference: {fileID: 0}
+    - target: {fileID: 7229176268603438061, guid: 5e633703958f49d49a2a3691cf6fb203,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7229176268603438061, guid: 5e633703958f49d49a2a3691cf6fb203,
         type: 3}

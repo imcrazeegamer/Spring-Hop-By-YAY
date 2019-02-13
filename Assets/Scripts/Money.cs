@@ -16,5 +16,6 @@ public class Money : ScriptableObject
     void Start()
     {
         //buffitem.GetComponent<AudioSource>().Play();
+        //Sound needs to be played on pickup.
     }
 }
