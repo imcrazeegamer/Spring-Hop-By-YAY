@@ -17,9 +17,14 @@ public class Effect : ScriptableObject
 
     private static bool shield = false;
 
+    private static bool hasSpring = false;
+
+    private static bool hasCape = false;
+
     private AudioSource audi;
 
     public Function function;
+
 
 
     void Initialize()
@@ -48,9 +53,7 @@ public class Effect : ScriptableObject
         if (shield)
         {
             ShieldDisable();
-            Debug.Log("invicstart");
             yield return new WaitForSeconds(2);
-            Debug.Log("invincibleover");
         }
         else
         {
@@ -80,6 +83,7 @@ public class Effect : ScriptableObject
         Initialize();
         //config
         const float duration = 2f;
+        hasSpring = true;
 
         //do rust effect
 
@@ -97,11 +101,19 @@ public class Effect : ScriptableObject
         //Debug.Log(rb.gravityScale);
         yield return new WaitForSeconds(duration);
         //Debug.Log("wait is over");
-        foreach (Platform platform in GameObject.FindGameObjectsWithTag("Platform").Select((p) => p.GetComponent<Platform>()))
+
+        if (!hasCape)
         {
-            platform.jumpForce = tempJumpForce;
+            foreach (Platform platform in GameObject.FindGameObjectsWithTag("Platform").Select((p) => p.GetComponent<Platform>()))
+            {
+                platform.jumpForce = tempJumpForce;
+            }
+            Destroy(buffitem);
         }
-        Destroy(buffitem);
+        if (hasCape)
+        {
+            Destroy(buffitem);
+        }
 
 
         //disable effect and remove debuff
@@ -128,6 +140,7 @@ public class Effect : ScriptableObject
     public IEnumerator Cape (Player player, GameObject buffitem)
     {
         Initialize();
+        hasCape = true;
         Rigidbody2D rb = player.rb;
         float tempJumpForce = 0;
         foreach (Platform platform in GameObject.FindGameObjectsWithTag("Platform").Select((p) => p.GetComponent<Platform>()))
@@ -142,12 +155,19 @@ public class Effect : ScriptableObject
         
         yield return new WaitForSeconds(2);
 
+
+        if (!hasSpring)
         foreach (Platform platform in GameObject.FindGameObjectsWithTag("Platform").Select((p) => p.GetComponent<Platform>()))
         {
             platform.jumpForce = tempJumpForce;
+                Destroy(buffitem);
+                hasCape = false;
+            }
+        if (hasSpring)
+        {
+            hasCape = false;
+            Destroy(buffitem);
         }
-        Destroy(buffitem);
-
     }
 }
 

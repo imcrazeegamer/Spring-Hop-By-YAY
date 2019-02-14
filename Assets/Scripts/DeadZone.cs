@@ -28,13 +28,10 @@ public class DeadZone : MonoBehaviour
             RestartButton.SetActive(true);
             MenuButton.SetActive(true);
         }
-        else if (collision.gameObject.tag == "Effect")
+        else if (collision.gameObject.tag == "Effect" || collision.gameObject.tag == "ShieldPower" || collision.gameObject.tag == "Money")
         {
             Destroy(collision.gameObject);
-        }
-        else if (collision.gameObject.tag == "ShieldPower")
-        {
-            Destroy(collision.gameObject);
+            //I'm not sure why, but nothing's getting destroyed for some reason. Some platforms are also not getting destroyed.
         }
  }
     }
