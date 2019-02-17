@@ -12,6 +12,7 @@ TagManager:
   - ShieldPower
   - moneyScore
   - Shield
+  - storeMoney
   layers:
   - Default
   - TransparentFX
