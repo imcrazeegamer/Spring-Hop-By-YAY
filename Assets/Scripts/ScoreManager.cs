@@ -10,17 +10,16 @@ public class ScoreManager : MonoBehaviour
 
     private int score;
 
-    public void Start()
-    {
-        ScoreText = GameObject.FindGameObjectWithTag("Score").GetComponent<Text>();
-        ScoreText.text = "Score: " + score;
-    }
-
     public ScoreManager()
     {
         score = 0;
     }
 
+    public void Start()
+    {
+        ScoreText = GameObject.FindGameObjectWithTag("Score").GetComponent<Text>();
+        ScoreText.text = "Score: " + score;
+    }
 
     public void PlatformScore(Collision2D collision)
     {
