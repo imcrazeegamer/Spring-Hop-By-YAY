@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StatPush : MonoBehaviour
+public class ButtonPushing : MonoBehaviour
 {
     //General Store Buttons
     [SerializeField]
@@ -18,6 +18,8 @@ public class StatPush : MonoBehaviour
     [SerializeField]
     private GameObject Hat;
 
+    [SerializeField]
+    private GameObject Money;
 
 
     //Stat Boost Buttons
@@ -68,6 +70,17 @@ public class StatPush : MonoBehaviour
     private GameObject backFromHat;
 
 
+    //General Store Images
+    [SerializeField]
+    private Sprite OffSprite;
+
+    [SerializeField]
+    private Sprite OnSprite;
+
+    [SerializeField]
+    private Image StoreImage;
+
+
 
     //Inventory Buttons
     [SerializeField]
@@ -112,16 +125,54 @@ public class StatPush : MonoBehaviour
     [SerializeField]
     private GameObject slot12;
 
-    private void Start()
+
+    public void OnClickStat()
     {
-        
+        Back.SetActive(!Back.activeSelf);
+        Stat.SetActive(!Stat.activeSelf);
+        Power.SetActive(!Power.activeSelf);
+        Hat.SetActive(!Hat.activeSelf);
+        inventoryOpen.SetActive(!inventoryOpen.activeSelf);
         jumpBoost.SetActive(!jumpBoost.activeSelf);
         speedBoost.SetActive(!speedBoost.activeSelf);
         backtoStore.SetActive(!backtoStore.activeSelf);
+
+        if (StoreImage.sprite == OnSprite)
+            StoreImage.sprite = OffSprite;
+        else
+        {
+            StoreImage.sprite = OnSprite;
+        }
+    }
+
+    public void onClickPower()
+    {
+        Back.SetActive(!Back.activeSelf);
+        Stat.SetActive(!Stat.activeSelf);
+        Power.SetActive(!Power.activeSelf);
+        Hat.SetActive(!Hat.activeSelf);
+        inventoryOpen.SetActive(!inventoryOpen.activeSelf);
         shieldButton.SetActive(!shieldButton.activeSelf);
         springButton.SetActive(!springButton.activeSelf);
         capeButton.SetActive(!capeButton.activeSelf);
         backFromPower.SetActive(!backFromPower.activeSelf);
+
+        if (StoreImage.sprite == OnSprite)
+            StoreImage.sprite = OffSprite;
+        else
+        {
+            StoreImage.sprite = OnSprite;
+
+        }
+    }
+
+    public void onClickHat()
+    {
+        Back.SetActive(!Back.activeSelf);
+        Stat.SetActive(!Stat.activeSelf);
+        Power.SetActive(!Power.activeSelf);
+        Hat.SetActive(!Hat.activeSelf);
+        inventoryOpen.SetActive(!inventoryOpen.activeSelf);
         gibus.SetActive(!gibus.activeSelf);
         crown.SetActive(!crown.activeSelf);
         ash.SetActive(!ash.activeSelf);
@@ -129,6 +180,24 @@ public class StatPush : MonoBehaviour
         bravo.SetActive(!bravo.activeSelf);
         cloud.SetActive(!cloud.activeSelf);
         backFromHat.SetActive(!backFromHat.activeSelf);
+
+        if (StoreImage.sprite == OnSprite)
+            StoreImage.sprite = OffSprite;
+        else
+        {
+            StoreImage.sprite = OnSprite;
+
+        }
+    }
+
+
+    public void onClickInventory()
+    {
+        Back.SetActive(!Back.activeSelf);
+        Stat.SetActive(!Stat.activeSelf);
+        Power.SetActive(!Power.activeSelf);
+        Hat.SetActive(!Hat.activeSelf);
+        inventoryOpen.SetActive(!inventoryOpen.activeSelf);
         backFromInventory.SetActive(!backFromInventory.activeSelf);
         slot1.SetActive(!slot1.activeSelf);
         slot2.SetActive(!slot2.activeSelf);
@@ -142,8 +211,16 @@ public class StatPush : MonoBehaviour
         slot10.SetActive(!slot10.activeSelf);
         slot11.SetActive(!slot11.activeSelf);
         slot12.SetActive(!slot12.activeSelf);
+        Money.SetActive(!Money.activeSelf);
+
+        if (StoreImage.sprite == OnSprite)
+            StoreImage.sprite = OffSprite;
+        else
+        {
+            StoreImage.sprite = OnSprite;
+
+        }
     }
+
+
 }
-
-
- 
