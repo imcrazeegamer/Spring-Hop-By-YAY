@@ -55,7 +55,7 @@ public class LevelGenerator : MonoBehaviour {
         else if (Random.Range(0, 100) <= 20)
             Instantiate(items[Random.Range(0, items.Length)], spawnPosition, Quaternion.identity);
         else if (Random.Range(0, 100) <= 40)
-            Instantiate(enemies[Random.Range(0, items.Length)], spawnPosition, Quaternion.identity);
+            Instantiate(enemies[Random.Range(0, enemies.Length)], spawnPosition, Quaternion.identity);
 
 
     }

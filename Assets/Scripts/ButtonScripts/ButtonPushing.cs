@@ -1,226 +1,60 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ButtonPushing : MonoBehaviour
 {
-    //General Store Buttons
-    [SerializeField]
-    private GameObject Back;
+    public enum Scence { Main, Stat, Power, Hat, Inventory }
 
     [SerializeField]
-    private GameObject Stat;
+    private List<Canvas> list;
 
-    [SerializeField]
-    private GameObject Power;
-
-    [SerializeField]
-    private GameObject Hat;
-
-    [SerializeField]
-    private GameObject Money;
-
-
-    //Stat Boost Buttons
-    [SerializeField]
-    private GameObject jumpBoost;
-
-    [SerializeField]
-    private GameObject speedBoost;
-
-    [SerializeField]
-    private GameObject backtoStore;
-
-
-    //PowerUp Buttons
-    [SerializeField]
-    private GameObject shieldButton;
-
-    [SerializeField]
-    private GameObject springButton;
-
-    [SerializeField]
-    private GameObject capeButton;
-
-    [SerializeField]
-    private GameObject backFromPower;
-
-
-    //Hat Buttons
-    [SerializeField]
-    private GameObject gibus;
-
-    [SerializeField]
-    private GameObject crown;
-
-    [SerializeField]
-    private GameObject ash;
-
-    [SerializeField]
-    private GameObject cyclops;
-
-    [SerializeField]
-    private GameObject bravo;
-
-    [SerializeField]
-    private GameObject cloud;
-
-    [SerializeField]
-    private GameObject backFromHat;
-
-
-    //General Store Images
-    [SerializeField]
-    private Sprite OffSprite;
-
-    [SerializeField]
-    private Sprite OnSprite;
-
-    [SerializeField]
-    private Image StoreImage;
-
-
-
-    //Inventory Buttons
-    [SerializeField]
-    private GameObject inventoryOpen;
-
-    [SerializeField]
-    private GameObject backFromInventory;
-
-    [SerializeField]
-    private GameObject slot1;
-
-    [SerializeField]
-    private GameObject slot2;
-
-    [SerializeField]
-    private GameObject slot3;
-
-    [SerializeField]
-    private GameObject slot4;
-
-    [SerializeField]
-    private GameObject slot5;
-
-    [SerializeField]
-    private GameObject slot6;
-
-    [SerializeField]
-    private GameObject slot7;
-
-    [SerializeField]
-    private GameObject slot8;
-
-    [SerializeField]
-    private GameObject slot9;
-
-    [SerializeField]
-    private GameObject slot10;
-
-    [SerializeField]
-    private GameObject slot11;
-
-    [SerializeField]
-    private GameObject slot12;
-
-
-    public void OnClickStat()
+    private Dictionary<Scence, Canvas> Scenes = new Dictionary<Scence, Canvas>(); 
+    
+    private void Awake()
     {
-        Back.SetActive(!Back.activeSelf);
-        Stat.SetActive(!Stat.activeSelf);
-        Power.SetActive(!Power.activeSelf);
-        Hat.SetActive(!Hat.activeSelf);
-        inventoryOpen.SetActive(!inventoryOpen.activeSelf);
-        jumpBoost.SetActive(!jumpBoost.activeSelf);
-        speedBoost.SetActive(!speedBoost.activeSelf);
-        backtoStore.SetActive(!backtoStore.activeSelf);
-
-        if (StoreImage.sprite == OnSprite)
-            StoreImage.sprite = OffSprite;
-        else
+        foreach(Canvas c in list)
         {
-            StoreImage.sprite = OnSprite;
+            foreach(Scence s in EnumUtil.GetValues<Scence>())
+            {
+                if(c.name == s.ToString())
+                {
+                    Scenes[s] = c;
+                }
+            }
+        }
+        ChangeArtaficalScence(Scence.Main.ToString());
+    }
+
+    public void ChangeArtaficalScence(string s)
+    {
+        //entry.Key = Scence Enum Value, entry.Value = Canvas that matches the key;
+        foreach (KeyValuePair<Scence, Canvas> entry in Scenes)
+        {
+            
+            entry.Value.gameObject.SetActive(entry.Key.ToString() == s);
+            SetActiveAllChildren(entry.Value.gameObject.transform, entry.Key.ToString() == s);
+        }
+    }
+    
+    public static class EnumUtil
+    {
+        public static IEnumerable<T> GetValues<T>()
+        {
+            return Enum.GetValues(typeof(T)).Cast<T>();
         }
     }
 
-    public void onClickPower()
+    private void SetActiveAllChildren(Transform transform, bool value)
     {
-        Back.SetActive(!Back.activeSelf);
-        Stat.SetActive(!Stat.activeSelf);
-        Power.SetActive(!Power.activeSelf);
-        Hat.SetActive(!Hat.activeSelf);
-        inventoryOpen.SetActive(!inventoryOpen.activeSelf);
-        shieldButton.SetActive(!shieldButton.activeSelf);
-        springButton.SetActive(!springButton.activeSelf);
-        capeButton.SetActive(!capeButton.activeSelf);
-        backFromPower.SetActive(!backFromPower.activeSelf);
-
-        if (StoreImage.sprite == OnSprite)
-            StoreImage.sprite = OffSprite;
-        else
+        foreach (Transform child in transform)
         {
-            StoreImage.sprite = OnSprite;
+            child.gameObject.SetActive(value);
 
+            SetActiveAllChildren(child, value);
         }
     }
-
-    public void onClickHat()
-    {
-        Back.SetActive(!Back.activeSelf);
-        Stat.SetActive(!Stat.activeSelf);
-        Power.SetActive(!Power.activeSelf);
-        Hat.SetActive(!Hat.activeSelf);
-        inventoryOpen.SetActive(!inventoryOpen.activeSelf);
-        gibus.SetActive(!gibus.activeSelf);
-        crown.SetActive(!crown.activeSelf);
-        ash.SetActive(!ash.activeSelf);
-        cyclops.SetActive(!cyclops.activeSelf);
-        bravo.SetActive(!bravo.activeSelf);
-        cloud.SetActive(!cloud.activeSelf);
-        backFromHat.SetActive(!backFromHat.activeSelf);
-
-        if (StoreImage.sprite == OnSprite)
-            StoreImage.sprite = OffSprite;
-        else
-        {
-            StoreImage.sprite = OnSprite;
-
-        }
-    }
-
-
-    public void onClickInventory()
-    {
-        Back.SetActive(!Back.activeSelf);
-        Stat.SetActive(!Stat.activeSelf);
-        Power.SetActive(!Power.activeSelf);
-        Hat.SetActive(!Hat.activeSelf);
-        inventoryOpen.SetActive(!inventoryOpen.activeSelf);
-        backFromInventory.SetActive(!backFromInventory.activeSelf);
-        slot1.SetActive(!slot1.activeSelf);
-        slot2.SetActive(!slot2.activeSelf);
-        slot3.SetActive(!slot3.activeSelf);
-        slot4.SetActive(!slot4.activeSelf);
-        slot5.SetActive(!slot5.activeSelf);
-        slot6.SetActive(!slot6.activeSelf);
-        slot7.SetActive(!slot7.activeSelf);
-        slot8.SetActive(!slot8.activeSelf);
-        slot9.SetActive(!slot9.activeSelf);
-        slot10.SetActive(!slot10.activeSelf);
-        slot11.SetActive(!slot11.activeSelf);
-        slot12.SetActive(!slot12.activeSelf);
-        Money.SetActive(!Money.activeSelf);
-
-        if (StoreImage.sprite == OnSprite)
-            StoreImage.sprite = OffSprite;
-        else
-        {
-            StoreImage.sprite = OnSprite;
-
-        }
-    }
-
-
 }

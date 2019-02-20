@@ -6,6 +6,7 @@ public class WalletComponent : MonoBehaviour
 {
     public Wallet wallet;
 
+    [SerializeField]
     private AudioSource audioo;
 
     private void Start()
@@ -17,7 +18,8 @@ public class WalletComponent : MonoBehaviour
     {
         if(collision.gameObject.tag == "Money")
         {
-            //GetComponent<AudioSource>().Play();
+            audioo.Play();
+            //collision.gameObject.GetComponent<AudioSource>().Play();
             //Wrong sound is being played. Need cash sound to play.
             wallet.Balance += collision.gameObject.GetComponent<MoneyComponent>().money.currencyAmount;
             Text ScoreText = GameObject.FindGameObjectWithTag("moneyScore").GetComponent<Text>();

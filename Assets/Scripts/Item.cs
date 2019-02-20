@@ -2,22 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item
+public abstract class Item : ScriptableObject
 {
-    private Sprite image;
-    private string name = "";
+    [SerializeField]
+    private Sprite icon;
+    [SerializeField]
+    private new string name = "";
+    [SerializeField]
+    private GameObject prefab;
 
-    public Sprite Image { get { return image; } set { image = value; } }
+    public Sprite Icon { get { return icon; }}
 
-    public Item(Sprite image)
-    {
-        this.image = image;
-    }
+    public GameObject Prefab { get { return prefab; } }
 
-    public Item(string name, Sprite image)
-    {
-        this.name = name;
-        this.image = image;
-    }
-    
+    public string Name { get { return name; } }
 }
