@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private GameObject Shield;
 
+    float screenWidth;
 
     [HideInInspector]
     public Rigidbody2D rb;
@@ -36,12 +37,24 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         GravityScale = rb.gravityScale;
+        float playerWidth = transform.localScale.x + 0.5f;
+        screenWidth = Camera.main.aspect * Camera.main.orthographicSize + playerWidth;
     }
 
     // Update is called once per frame
     void Update()
     {
         movement = Input.GetAxis("Horizontal") * movementSpeed;
+
+        if(transform.position.x < -screenWidth)
+        {
+            transform.position = new Vector2(screenWidth, transform.position.y);
+        }
+
+        if (transform.position.x > screenWidth)
+        {
+            transform.position = new Vector2(-screenWidth, transform.position.y);
+        }
     }
 
     void FixedUpdate()

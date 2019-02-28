@@ -870,7 +870,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AspectMode: 0
-  m_AspectRatio: 1.535433
+  m_AspectRatio: 1.4852321
 --- !u!1001 &1314927618
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1672,6 +1672,22 @@ PrefabInstance:
     - target: {fileID: 1829405998, guid: 2fa2033ee0009454abb15447e102ef4f, type: 3}
       propertyPath: m_LocalScale.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 64210661, guid: 2fa2033ee0009454abb15447e102ef4f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 431254442, guid: 2fa2033ee0009454abb15447e102ef4f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 892908513, guid: 2fa2033ee0009454abb15447e102ef4f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437758133, guid: 2fa2033ee0009454abb15447e102ef4f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2fa2033ee0009454abb15447e102ef4f, type: 3}
